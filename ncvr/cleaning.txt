@@ -1,0 +1,21 @@
+
+https://dl.ncsbe.gov/?prefix=data/Snapshots/
+
+iconv -f UTF-16LE -t UTF-8//IGNORE VR_Snapshot_20141104.txt > VR_Snapshot_20141104.v1.txt
+tr < VR_Snapshot_20141104.v1.txt -d '\000' > VR_Snapshot_20141104.v2.txt
+tr < VR_Snapshot_20141104.v2.txt -d '\\' > VR_Snapshot_20141104.v3.txt
+sed 1d VR_Snapshot_20141104.v3.txt > VR_Snapshot_20141104.v4.txt
+mv VR_Snapshot_20141104.v4.txt VR_Snapshot_20141104.txt
+
+iconv -f UTF-16LE -t UTF-8//IGNORE VR_Snapshot_20171107.txt > VR_Snapshot_20171107.v1.txt
+tr < VR_Snapshot_20171107.v1.txt -d '\000' > VR_Snapshot_20171107.v2.txt
+tr < VR_Snapshot_20171107.v2.txt -d '\\' > VR_Snapshot_20171107.v3.txt
+sed 1d VR_Snapshot_20171107.v3.txt > VR_Snapshot_20171107.v4.txt
+mv VR_Snapshot_20171107.v4.txt VR_Snapshot_20171107.txt
+date
+
+
+
+#OTHER USEFUL COMMANDS
+#Output lines that have 90 columns -> awk -F'\t' 'NF==90' VR_Snapshot_20141104.v3.txt  > VR_Snapshot_20141104.v4.txt
+#Extract particular line -> cat VR_Snapshot_20141104.v4.txt | sed -n '1060791p'
