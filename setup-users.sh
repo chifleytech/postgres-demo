@@ -1,22 +1,21 @@
 #!/bin/bash
 set -e
-
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-	CREATE USER mary WITH PASSWORD 'mary';
-	alter default privileges in schema public grant all on tables to mary;
-    alter default privileges in schema public grant all on sequences to mary;
-  	GRANT ALL PRIVILEGES ON DATABASE postgres TO mary;
-    GRANT ALL PRIVILEGES ON SCHEMA public to mary;
-EOSQL
+    CREATE USER bob WITH PASSWORD 'password';
+    ALTER USER bob WITH SUPERUSER;
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-	CREATE USER bob WITH PASSWORD 'bob';
-	alter default privileges in schema public grant all on tables to bob;
-    alter default privileges in schema public grant all on sequences to bob;
-	GRANT ALL PRIVILEGES ON DATABASE postgres TO bob;
-	GRANT ALL PRIVILEGES ON SCHEMA public to mary;
-EOSQL
+    CREATE USER mary WITH PASSWORD 'password';
+    ALTER USER mary WITH SUPERUSER;
 
-psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-    ALTER USER postgres WITH SUPERUSER
+    CREATE USER rjenkins WITH PASSWORD 'password';
+    ALTER USER rjenkins WITH SUPERUSER;
+
+    CREATE USER mkim WITH PASSWORD 'password';
+    ALTER USER mkim WITH SUPERUSER;
+
+    CREATE USER jsmith WITH PASSWORD 'password';
+    ALTER USER jsmith WITH SUPERUSER;
+
+    CREATE USER sfox WITH PASSWORD 'password';
+    ALTER USER sfox WITH SUPERUSER;
 EOSQL
