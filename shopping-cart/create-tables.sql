@@ -18,3 +18,24 @@ CREATE TABLE expected(
    amazon     VARCHAR(100)
   ,google VARCHAR(100)
 );
+
+CREATE TABLE amazon_prod(
+   id           VARCHAR(100) NOT NULL PRIMARY KEY
+  ,title        VARCHAR(1044)
+  ,description  VARCHAR(19263)
+  ,manufacturer VARCHAR(45)
+  ,price        VARCHAR(45)
+);
+
+CREATE TABLE google_prod(
+   id           VARCHAR(100) NOT NULL PRIMARY KEY
+  ,title        VARCHAR(1044)
+  ,description  VARCHAR(19263)
+  ,manufacturer VARCHAR(45)
+  ,price        VARCHAR(45)
+);
+
+CREATE TABLE expected_prod(
+   amazon     VARCHAR(100)
+  ,google VARCHAR(100)
+);
